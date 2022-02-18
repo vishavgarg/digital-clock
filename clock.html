@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vClock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(90deg, rgba(36, 1, 0, 1) 0%, rgba(255, 4, 0, 1) 0%, rgba(9, 9, 121, 1) 51%, rgba(0, 212, 255, 1) 100%);
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        @font-face {
+            font-family: clock;
+            src: url(digital-7.ttf);
+        }
+        
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        
+        h1 {
+            font-family: clock;
+            color: white;
+            font-size: 20em
+        }
+        
+        .time {
+            border: 2px solid white;
+            padding: 10px 30px;
+            border-radius: 10px;
+            box-shadow: rgba(250, 249, 249, 0.16) 0px 6px 12px, rgba(253, 251, 251, 0.23) 0px 6px 12px;
+        }
+        
+        h2 span {
+            border: 2px solid white;
+            padding: 10px 10px;
+            border-radius: 10px;
+            box-shadow: rgba(250, 249, 249, 0.16) 0px 6px 12px, rgba(253, 251, 251, 0.23) 0px 6px 12px;
+        }
+        
+        .date {
+            color: white;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="date"><span class="day"></span> - <span class="month"></span> - <span class="year"></span></h2>
+        <h1><span class="hour time"></span>:<span class="minute time"></span>:<span class="second time"></span></h1>
+    </div>
+
+
+    <script>
+        let hour = document.querySelector('.hour');
+        let minute = document.querySelector('.minute');
+        let second = document.querySelector('.second');
+        let day = document.querySelector('.day');
+        let month = document.querySelector('.month');
+        let year = document.querySelector('.year');
+
+        function time() {
+            const now = new Date();
+            hour.innerHTML = now.getHours();
+            minute.innerHTML = now.getMinutes();
+            second.innerHTML = now.getSeconds();
+            day.innerHTML = now.getDate();
+            month.innerHTML = now.getMonth();
+            year.innerHTML = now.getFullYear();
+        }
+
+        setInterval(time, 1000);
+    </script>
+</body>
+
+</html>
